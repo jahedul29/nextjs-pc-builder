@@ -13,7 +13,7 @@ const CategoryDetails = ({ categoryDetails }) => {
     return (
         <div className='container m-auto pb-20'>
             <h1 className='mt-12 mb-10 mb-5 font-bold text-3xl text-black'>Items under {categoryName} category</h1>
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-y-4 gap-x-0 sm:gap-x-4'>
                 {
                     categoryDetails?.map(item => <ProductCard key={item._id} product={item} />)
                 }

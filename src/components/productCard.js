@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
 
     return (
         <Link href={`/product/${product._id}`}>
-            <div className="card w-96 bg-base-100 shadow-xl relative">
+            <div className="card w-96 bg-base-100 shadow-xl relative m-auto">
                 <div className={`rounded-lg text-white font-bold text-base px-2 py-1 absolute top-2 right-2 z-10 ${product.status === "In Stock" ? "bg-green-500" : "bg-red-500"}`}>
                     {product.status}
                 </div>

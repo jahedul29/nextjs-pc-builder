@@ -32,7 +32,7 @@ const Navbar = () => {
                             <a>Categories</a>
                             <ul className="p-2">
                                 {
-                                    categories?.map(item => <li key={item._id}><Link href={`/categories/${item._id}`} className="w-[50px] text-center">{item.name}</Link></li>)
+                                    categories?.map(item => <li key={item._id}><Link href={`/categories/${item._id}`} className="w-[150px] text-center">{item.name}</Link></li>)
                                 }
                             </ul>
                         </li>

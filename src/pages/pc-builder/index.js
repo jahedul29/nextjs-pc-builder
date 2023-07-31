@@ -47,16 +47,16 @@ const PcBuilder = ({ categories }) => {
 
     return (
         <div className='container m-auto text-white pb-20'>
-            <h1 className='mt-7 mb-5 font-bold text-3xl text-black'>Build Your PC</h1>
+            <h1 className='mt-7 mb-5 font-bold text-3xl text-black text-center'>Build Your PC</h1>
             <p className='text-base'>Please select category from below</p>
-            <div className='grid grid-cols-4 gap-4 text-black'>
+            <div className='grid grid-cols-1 sm:grid-cols-4 gap-4 text-black mx-3 sm:mx-0'>
                 {categories.map(item => <div key={item._id} className={`py-2 px-4 rounded-md flex justify-between items-center ${selectedItemList.find(innerItem => innerItem.category._id === item._id) ? "bg-purple-400" : "bg-purple-100"}`}>
                     <p className='font-medium text-md'>{item.name}</p>
                     <Link href={`/category/${item._id}?choosable=true`} className='p-2 rounded-md bg-purple-900 text-white'>Choose</Link>
                 </div>)}
             </div>
-            <div className='mt-7 mb-5 flex items-center justify-between'>
-                <div>
+            <div className='mt-7 mb-5 flex flex-col sm:flex-row items-center justify-between'>
+                <div className='flex flex-col items-center sm:items-start'>
                     <h1 className=' font-bold text-3xl text-black'>Selected items</h1>
                     <p className='text-red-500 block'>Please select at least one component from all categories</p>
                 </div>
@@ -68,8 +68,8 @@ const PcBuilder = ({ categories }) => {
                     </svg>
                 </button>
             </div>
-            <div className='text-black gap-4 flex flex-col items-center'>
-                {selectedItemList?.map(item => <div key={item._id} className='flex justify-between items-center px-4 py-3 w-[600px] rounded bg-purple-100'>
+            <div className='text-black gap-4 flex flex-col items-center px-3 sm:px-0'>
+                {selectedItemList?.map(item => <div key={item._id} className='flex justify-between items-center px-4 py-3 w-[100%] sm:w-[600px] rounded bg-purple-100'>
                     <p className='font-medium'>{item.productName}</p>
                     <button onClick={() => handleRemoveItem(item._id)}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none" />
@@ -77,7 +77,7 @@ const PcBuilder = ({ categories }) => {
                     </svg>
                     </button>
                 </div>)}
-                <button disabled={!isAllCategoriesSelected} onClick={handleSave} className={`mt-10 px-8 py-2 bg-purple-900 text-white rounded-md w-[600px] ${isAllCategoriesSelected ? "opacity-100" : "opacity-50"}`}>Complete Build</button>
+                <button disabled={!isAllCategoriesSelected} onClick={handleSave} className={`mt-10 px-8 py-2 bg-purple-900 text-white rounded-md w-[100%] sm:w-[600px] ${isAllCategoriesSelected ? "opacity-100" : "opacity-50"}`}>Complete Build</button>
             </div>
         </div>
     );
