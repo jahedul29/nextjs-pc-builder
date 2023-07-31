@@ -1,8 +1,22 @@
+import { addItem } from '@/redux/features/pc-build/pcBuildSlice';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const ProductCard = ({ product, isAddComponentAvailable = false }) => {
+const ProductCard = ({ product }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const query = router.query;
+
+    const handleAddItem = (e, item) => {
+        e.stopPropagation();
+        e.preventDefault();
+        dispatch(addItem(item));
+        router.push("/pc-builder")
+    }
+
     return (
         <Link href={`/product/${product._id}`}>
             <div className="card w-96 bg-base-100 shadow-xl relative">
@@ -19,9 +33,9 @@ const ProductCard = ({ product, isAddComponentAvailable = false }) => {
                     <p>Price: {product.price}</p>
                     <p>Rating: {product.averageRating}</p>
                     {
-                        isAddComponentAvailable && (
+                        query.choosable && (
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Add Component</button>
+                                <button className="btn btn-primary" onClick={(e) => handleAddItem(e, product)}>Add To Builder</button>
                             </div>
                         )
                     }

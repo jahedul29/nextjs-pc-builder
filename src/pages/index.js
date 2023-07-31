@@ -3,12 +3,19 @@ import ProductCard from '@/components/productCard';
 import config from '@/config';
 import RootLayout from '@/layouts/rootLayout'
 import Link from 'next/link';
-
+import bannerImg from '@/assets/images/pc-builder-banner.png'
+import Image from 'next/image';
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ featuredCategories, featuredProducts }) {
   return (
-    <div className='container m-auto'>
+    <div className='container m-auto pb-20'>
+      <div className='w-full h-[600px] overflow-hidden flex items-center justify-center relative'>
+        <Image src={bannerImg} alt='banner' objectFit='cover' className='w-full relative' />
+        <div className='absolute h-full w-full flex items-center justify-center z-10 bg-gray-900 bg-opacity-70'>
+          <h1 className='text-8xl font-bold font-italic text-white'>Build your own desktop</h1>
+        </div>
+      </div>
       <h1 className='mt-7 mb-5 font-bold text-3xl text-black'>Featured Product</h1>
       <div className='grid grid-cols-3 gap-4'>
         {
@@ -34,7 +41,6 @@ export const getStaticProps = async () => {
   const productData = await fetch(`${config.api_url}/get-products/featured`);
   const productResult = await productData.json();
 
-  console.log({ productResult })
   return {
     props: {
       featuredCategories: result,

@@ -1,7 +1,9 @@
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
+    const { data: session } = useSession();
     const [categories, setCategories] = useState([]);
 
     const getCategories = async () => {
@@ -36,7 +38,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">PC Builder</a>
+                <Link href={"/"} className="btn btn-ghost normal-case text-xl">PC Builder</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 z-20">
@@ -53,7 +55,18 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Build PC</a>
+                {
+                    session ? (
+                        <div className="flex gap-x-4">
+                            <Link href={'/pc-builder'} className="btn text-white">Build PC</Link>
+                            <button onClick={() => signOut({
+                                callbackUrl: `/`
+                            })} className="btn bg-red-600 text-white border-none">Logout</button>
+                        </div>
+                    ) : (
+                        <button onClick={signIn} className="btn bg-green-600 text-white border-none">Login</button>
+                    )
+                }
             </div>
         </div>
     );

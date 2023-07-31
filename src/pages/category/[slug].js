@@ -1,10 +1,14 @@
 import ProductCard from '@/components/productCard';
 import config from '@/config';
 import RootLayout from '@/layouts/rootLayout';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CategoryDetails = ({ categoryDetails }) => {
-    const [categoryName] = useState(categoryDetails.length ? categoryDetails[0].category.name : "");
+    const [categoryName, setCategoryName] = useState("");
+
+    useEffect(() => {
+        setCategoryName(categoryDetails.length ? categoryDetails[0].category.name : "")
+    }, [categoryDetails])
 
     return (
         <div className='container m-auto'>

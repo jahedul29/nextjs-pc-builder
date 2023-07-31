@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/footer";
 import Navbar from "../components/shared/navbar";
 
 const RootLayout = ({ children }) => {
@@ -7,6 +8,7 @@ const RootLayout = ({ children }) => {
             <div className="min-h-screen w-full">
                 {children}
             </div>
+            <Footer />
         </main>
     );
 };

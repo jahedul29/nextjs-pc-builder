@@ -1,13 +1,8 @@
-import ProductCard from '@/components/productCard';
 import config from '@/config';
 import RootLayout from '@/layouts/rootLayout';
 import Image from 'next/image';
-import React, { useState } from 'react';
 
 const ProductDetails = ({ productDetails }) => {
-    // const [categoryName] = useState(categoryDetails.length ? categoryDetails[0].category.name : "");
-    console.log({ productDetails })
-
     return (
         <div className='container m-auto'>
             <h1 className='mt-12 mb-10 mb-5 font-bold text-3xl text-black'>{productDetails.productName}</h1>
