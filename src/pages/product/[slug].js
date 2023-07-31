@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const ProductDetails = ({ productDetails }) => {
     return (
-        <div className='container m-auto'>
+        <div className='container m-auto pb-20'>
             <h1 className='mt-12 mb-10 mb-5 font-bold text-3xl text-black'>{productDetails.productName}</h1>
             <div className=''>
                 <div className='w-[500px] mb-20 m-auto'>
@@ -39,10 +39,10 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
     const res = await fetch(`${config.api_url}/get-products`)
     const productList = await res.json()
-    const productPaths = productList.map((cat) => ({
-        params: { slug: cat._id },
+    const productPaths = productList.map((product) => ({
+        params: { slug: product._id },
     }))
-    return { paths: productPaths, fallback: true }
+    return { paths: productPaths, fallback: false }
 }
 
 

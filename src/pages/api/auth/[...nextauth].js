@@ -10,6 +10,7 @@ export const authOptions = {
             clientSecret: config.github_client_secret,
         }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
 }
 
 export default NextAuth(authOptions)

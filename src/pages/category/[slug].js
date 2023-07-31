@@ -11,7 +11,7 @@ const CategoryDetails = ({ categoryDetails }) => {
     }, [categoryDetails])
 
     return (
-        <div className='container m-auto'>
+        <div className='container m-auto pb-20'>
             <h1 className='mt-12 mb-10 mb-5 font-bold text-3xl text-black'>Items under {categoryName} category</h1>
             <div className='grid grid-cols-3 gap-4'>
                 {

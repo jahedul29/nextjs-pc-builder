@@ -5,7 +5,7 @@ const RootLayout = ({ children }) => {
     return (
         <main className="w-full">
             <Navbar />
-            <div className="min-h-screen w-full">
+            <div className="w-full" style={{ minHeight: '90vh' }}>
                 {children}
             </div>
             <Footer />
