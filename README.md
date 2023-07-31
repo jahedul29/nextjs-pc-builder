@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Next PC Builder
+# [Next PC Builder](https://next-pc-builder-jahedul29.vercel.app/)
 
 ## Features
 
